@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071b2d" />
+  <title>Boundary — International Cricket</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Boundary home"><span class="brand-mark">B</span><span>BOUNDARY</span></a>
+    <span class="live-pill"><i></i> INTERNATIONAL CRICKET</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">THE GAME, LIVE</p>
+        <h1>Every run.<br><span>Every moment.</span></h1>
+        <p class="hero-copy">International cricket scores, results and complete scorecards in one place.</p>
+      </div>
+      <div class="hero-ball" aria-hidden="true">🏏</div>
+    </section>
+
+    <section class="section-head">
+      <div><p class="eyebrow">MATCH CENTRE</p><h2>International matches</h2></div>
+      <div class="filter-tabs" role="group" aria-label="Match filter">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="live">Live</button>
+        <button class="filter" data-filter="result">Results</button>
+      </div>
+    </section>
+
+    <div id="matchList" class="match-list" aria-live="polite"></div>
+
+    <section class="section-head score-entry-head">
+      <div><p class="eyebrow">MANUAL SCORING</p><h2>Score controller</h2></div>
+      <span class="demo-note">Demo match</span>
+    </section>
+
+    <section class="scoring-layout">
+      <article class="panel score-panel">
+        <div class="panel-top">
+          <div><p class="eyebrow">CURRENT INNINGS</p><h3 id="inningsTitle">India innings</h3></div>
+          <span class="live-pill"><i></i> LIVE</span>
+        </div>
+        <div class="big-score"><span id="score">126/3</span><span id="overs">14.2 overs</span></div>
+        <div class="score-meta"><span>Run rate <b id="runRate">8.79</b></span><span>Target <b id="target">—</b></span><span>Extras <b id="extras">5</b></span></div>
+        <div class="batters">
+          <div class="mini-head"><span>BATTER</span><span>R</span><span>B</span><span>4s</span><span>6s</span><span>SR</span></div>
+          <div id="strikerRow" class="player-row"></div>
+          <div id="nonStrikerRow" class="player-row"></div>
+        </div>
+        <div class="bowler">
+          <div class="mini-head"><span>BOWLER</span><span>O</span><span>M</span><span>R</span><span>W</span><span>ECON</span></div>
+          <div id="bowlerRow" class="player-row"></div>
+        </div>
+        <div class="control-grid">
+          <button class="run-btn" data-runs="0">0 <small>DOT</small></button>
+          <button class="run-btn" data-runs="1">1 <small>RUN</small></button>
+          <button class="run-btn" data-runs="2">2 <small>RUNS</small></button>
+          <button class="run-btn" data-runs="3">3 <small>RUNS</small></button>
+          <button class="run-btn boundary" data-runs="4">4 <small>FOUR</small></button>
+          <button class="run-btn boundary" data-runs="6">6 <small>SIX</small></button>
+          <button id="wideBtn" class="extra-btn">Wide +1</button>
+          <button id="noBallBtn" class="extra-btn">No-ball +1</button>
+          <button id="byeBtn" class="extra-btn">Bye +1</button>
+          <button id="wicketBtn" class="wicket-btn">WICKET</button>
+        </div>
+        <div class="action-row">
+          <button id="undoBtn" class="secondary-btn">↶ Undo last ball</button>
+          <button id="swapBtn" class="secondary-btn">⇄ Swap batters</button>
+          <button id="resetBtn" class="secondary-btn">Reset demo</button>
+        </div>
+        <p class="hint">Score controls are manual. This demo refreshes its display every second; it does not fetch verified live scores from Google.</p>
+      </article>
+
+      <aside class="panel details-panel">
+        <div class="panel-top"><div><p class="eyebrow">MATCH DETAILS</p><h3>Batting order</h3></div></div>
+        <ol id="battingOrder" class="batting-order"></ol>
+        <div class="divider"></div>
+        <div class="panel-top"><div><p class="eyebrow">INNINGS SUMMARY</p><h3>Fall of wickets</h3></div></div>
+        <div id="fallWickets" class="fall-wickets">No wickets yet</div>
+        <div class="divider"></div>
+        <div class="panel-top"><div><p class="eyebrow">FULL SCORECARD</p><h3>India vs Australia</h3></div></div>
+        <button id="scorecardBtn" class="primary-btn">View full scorecard <span>↗</span></button>
+        <p class="hint">Use the controls to update batter, bowler, innings and scorecard statistics.</p>
+      </aside>
+    </section>
+
+    <section id="fullScorecard" class="panel full-scorecard hidden">
+      <div class="panel-top"><div><p class="eyebrow">DETAILED SCORECARD</p><h2>India batting</h2></div><button id="closeScorecard" class="secondary-btn">Close</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Batter</th><th>Dismissal</th><th>R</th><th>B</th><th>4s</th><th>6s</th><th>SR</th></tr></thead><tbody id="scorecardBody"></tbody></table></div>
+      <div class="table-wrap bowling-table"><table><thead><tr><th>Bowler</th><th>O</th><th>M</th><th>R</th><th>W</th><th>ECON</th></tr></thead><tbody id="bowlingBody"></tbody></table></div>
+    </section>
+
+    <footer><span class="brand-mark small">B</span><span>BOUNDARY</span><span class="footer-note">Independent demo · Not affiliated with Google or any cricket board</span></footer>
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>
